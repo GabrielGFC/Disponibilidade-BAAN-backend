@@ -2,19 +2,11 @@ import swaggerAutogen from 'swagger-autogen';
 
 const outputFile = './swagger_output.json';
 const endpointsFile = [
-	'../src/routes/usuarioRoutes.js',
-	'../src/routes/efetivoRoutes.js',
-	'../src/routes/graduacaoRoutes.js',
-	'../src/routes/postoRoutes.js',
-	'../src/routes/qrcodeRoutes.js',
-	'../src/routes/registroAcessoRoutes.js',
-	'../src/routes/sincronismoRoutes.js',
-	'../src/routes/unidadeRoutes.js',
-	'../src/routes/veiculoRoutes.js',
-	'../src/routes/visitanteRoutes.js',
-	'../src/routes/alertaRoutes.js',
-	'../src/routes/dependenteRoutes.js',
-	'../src/routes/cartaoVacinaRoutes.js'
+    '../src/routes/FamiliaRoutes.js',
+    '../src/routes/LoginRoutes.js',
+    '../src/routes/PedidoRoutes.js',
+    '../src/routes/UserRoutes.js'
+
 ];
 
 const doc = {
@@ -23,7 +15,7 @@ const doc = {
 		title: 'SCA Backend',
 		description: 'Sistema de controle de acesso'
 	},
-	host: 'localhost:3100',
+	host: 'localhost:3000',
 	basePath: '/',
 	consumes: ['application/json'],
 	produces: ['application/json'],
@@ -31,7 +23,7 @@ const doc = {
 		apiKey: {
 			type: 'apiKey',
 			name: 'Authentication',
-			in: 'header'
+			in:'header'
 		},
 		accessLevel: {
 			type: 'apiKey',
@@ -39,7 +31,11 @@ const doc = {
 			in: 'header'
 		}
 	},
-	security: [{ apiKey: [] }, { accessLevel: [] }]
+	security: [
+		{ apiKey: [] },
+		{ accessLevel: [] }
+	]
 };
 
 swaggerAutogen(outputFile, endpointsFile, doc);
+

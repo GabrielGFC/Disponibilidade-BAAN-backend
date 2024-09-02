@@ -5,7 +5,7 @@
     "title": "SCA Backend",
     "description": "Sistema de controle de acesso"
   },
-  "host": "localhost:3100",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http"
@@ -29,11 +29,430 @@
     "application/json"
   ],
   "paths": {
+    "/familia": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "nome",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "quantidadeMAX",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "quantidadeMIN",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "quantidadeMIN": {
+                  "example": "any"
+                },
+                "quantidadeMAX": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/familia/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "quantidadeMIN": {
+                  "example": "any"
+                },
+                "quantidadeMAX": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matricula": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pedido/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "quantidadeItens": {
+                  "example": "any"
+                },
+                "familias": {
+                  "example": "any"
+                },
+                "nomeAluno": {
+                  "example": "any"
+                },
+                "box": {
+                  "example": "any"
+                },
+                "periodoAluno": {
+                  "example": "any"
+                },
+                "tipo": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "colaborador": {
+                  "example": "any"
+                },
+                "assinatura": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pedido": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "matricula",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "nomeAluno",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "periodoAluno",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "quantidadeItens",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "familias",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "box",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "colaborador",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "assinatura",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "createdAt",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matricula": {
+                  "example": "any"
+                },
+                "quantidadeItens": {
+                  "example": "any"
+                },
+                "nomeAluno": {
+                  "example": "any"
+                },
+                "periodoAluno": {
+                  "example": "any"
+                },
+                "familias": {
+                  "example": "any"
+                },
+                "box": {
+                  "example": "any"
+                },
+                "tipo": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "colaborador": {
+                  "example": "any"
+                },
+                "assinatura": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/usuario": {
       "get": {
-        "tags": [
-          "Usuario"
-        ],
         "description": "",
         "parameters": [
           {
@@ -42,12 +461,27 @@
             "type": "string"
           },
           {
-            "name": "nivel_acesso",
+            "name": "limit",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "militar",
+            "name": "cargo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "matricula",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "nomeUser",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
             "in": "query",
             "type": "string"
           }
@@ -62,9 +496,6 @@
         }
       },
       "post": {
-        "tags": [
-          "Usuario"
-        ],
         "description": "",
         "parameters": [
           {
@@ -73,16 +504,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "usuario": {
+                "matricula": {
                   "example": "any"
                 },
                 "senha": {
                   "example": "any"
                 },
-                "nivel_acesso": {
+                "nomeUser": {
                   "example": "any"
                 },
-                "modulos": {
+                "cargo": {
+                  "example": "any"
+                },
+                "status": {
                   "example": "any"
                 }
               }
@@ -102,15 +536,12 @@
         }
       }
     },
-    "/usuario/{id}": {
+    "/usuario/{matricula}": {
       "get": {
-        "tags": [
-          "Usuario"
-        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "matricula",
             "in": "path",
             "required": true,
             "type": "string"
@@ -120,22 +551,16 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
-          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": [
-          "Usuario"
-        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "matricula",
             "in": "path",
             "required": true,
             "type": "string"
@@ -146,17 +571,17 @@
             "schema": {
               "type": "object",
               "properties": {
-                "usuario": {
-                  "example": "any"
-                },
-                "nivel_acesso": {
-                  "example": "any"
-                },
-                "modulos": {
-                  "example": "any"
-                },
                 "senha": {
                   "example": "any"
+                },
+                "nomeUser": {
+                  "example": "any"
+                },
+                "cargo": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
                 }
               }
             }
@@ -166,8 +591,8 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -175,24 +600,18 @@
         }
       },
       "delete": {
-        "tags": [
-          "Usuario"
-        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "matricula",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
@@ -200,241 +619,32 @@
         }
       }
     },
-    "/usuarioLogin": {
-      "post": {
-        "tags": [
-          "Usuario"
-        ],
+    "/usuario/modificar/{matricula}": {
+      "put": {
         "description": "",
         "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "usuario": {
-                  "example": "any"
-                },
                 "senha": {
                   "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/efetivo": {
-      "get": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "qrcode_efetivo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nome_guerra",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nome_completo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "unidade",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "graduacao",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_graduacao": {
+                },
+                "nomeUser": {
                   "example": "any"
                 },
-                "nome_completo": {
+                "cargo": {
                   "example": "any"
                 },
-                "nome_guerra": {
-                  "example": "any"
-                },
-                "dependente": {
-                  "example": "any"
-                },
-                "id_alerta": {
-                  "example": "any"
-                },
-                "id_unidade": {
-                  "example": "any"
-                },
-                "qrcode_efetivo": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "cnh": {
-                  "example": "any"
-                },
-                "val_cnh": {
-                  "example": "any"
-                },
-                "nivel_acesso": {
-                  "example": "any"
-                },
-                "ativo_efetivo": {
-                  "example": "any"
-                },
-                "sinc_efetivo": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/efetivo/{id}": {
-      "get": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_graduacao": {
-                  "example": "any"
-                },
-                "nome_completo": {
-                  "example": "any"
-                },
-                "nome_guerra": {
-                  "example": "any"
-                },
-                "dependente": {
-                  "example": "any"
-                },
-                "id_alerta": {
-                  "example": "any"
-                },
-                "id_unidade": {
-                  "example": "any"
-                },
-                "qrcode_efetivo": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "cnh": {
-                  "example": "any"
-                },
-                "val_cnh": {
-                  "example": "any"
-                },
-                "nivel_acesso": {
-                  "example": "any"
-                },
-                "ativo_efetivo": {
-                  "example": "any"
-                },
-                "sinc_efetivo": {
+                "status": {
                   "example": "any"
                 }
               }
@@ -444,2116 +654,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/efetivo/consulta/{id}": {
-      "get": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/efetivoLogin": {
-      "post": {
-        "tags": [
-          "Efetivo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "cpf": {
-                  "example": "any"
-                },
-                "senha": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/graduacao": {
-      "get": {
-        "tags": [
-          "Graduacao"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Graduacao"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "sigla": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "ordem": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/graduacao/{id}": {
-      "get": {
-        "tags": [
-          "Graduacao"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Graduacao"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "sigla": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "ordem": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Graduacao"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/posto": {
-      "get": {
-        "tags": [
-          "Posto"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nome",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nivel_acesso",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Posto"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "nivel_acesso": {
-                  "example": "any"
-                },
-                "ativo_posto": {
-                  "example": "any"
-                },
-                "sinc_posto": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/posto/{id}": {
-      "get": {
-        "tags": [
-          "Posto"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Posto"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "nivel_acesso": {
-                  "example": "any"
-                },
-                "ativo_posto": {
-                  "example": "any"
-                },
-                "sinc_posto": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Posto"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/qrcode": {
-      "get": {
-        "tags": [
-          "QRCode"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "QRCode"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "qrcode": {
-                  "example": "any"
-                },
-                "nivel_acesso": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/qrcode/{qrcode}": {
-      "get": {
-        "tags": [
-          "QRCode"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "qrcode",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "QRCode"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "qrcode",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nivel_acesso": {
-                  "example": "any"
-                },
-                "entity": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "QRCode"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "qrcode",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/registro_acesso": {
-      "get": {
-        "tags": [
-          "RegistroAcesso"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "modalidade",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "tipo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "placa",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "data",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "sentinela_autorizador",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "id_posto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "pessoa_militar",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "RegistroAcesso"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "tipo": {
-                  "example": "any"
-                },
-                "data": {
-                  "example": "any"
-                },
-                "hora": {
-                  "example": "any"
-                },
-                "posto": {
-                  "example": "any"
-                },
-                "qrcode": {
-                  "example": "any"
-                },
-                "cracha_pessoa_numero": {
-                  "example": "any"
-                },
-                "cracha_veiculo_numero": {
-                  "example": "any"
-                },
-                "cpf_visitante": {
-                  "example": "any"
-                },
-                "cpf_dependente": {
-                  "example": "any"
-                },
-                "id_veiculo": {
-                  "example": "any"
-                },
-                "placa_veiculo_sem_an": {
-                  "example": "any"
-                },
-                "autorizador": {
-                  "example": "any"
-                },
-                "qrcode_autorizador": {
-                  "example": "any"
-                },
-                "sentinela": {
-                  "example": "any"
-                },
-                "sinc_acesso": {
-                  "example": "any"
-                },
-                "device": {
-                  "example": "any"
-                },
-                "detalhe": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/registro_acesso/{id}": {
-      "get": {
-        "tags": [
-          "RegistroAcesso"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "RegistroAcesso"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "tipo": {
-                  "example": "any"
-                },
-                "data": {
-                  "example": "any"
-                },
-                "hora": {
-                  "example": "any"
-                },
-                "id_posto": {
-                  "example": "any"
-                },
-                "qrcode": {
-                  "example": "any"
-                },
-                "id_efetivo": {
-                  "example": "any"
-                },
-                "id_visitante": {
-                  "example": "any"
-                },
-                "id_dependente": {
-                  "example": "any"
-                },
-                "id_veiculo": {
-                  "example": "any"
-                },
-                "autorizador": {
-                  "example": "any"
-                },
-                "sinc_acesso": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "RegistroAcesso"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/sincronismo": {
-      "get": {
-        "tags": [
-          "Sincronismo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Sincronismo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "sinc_pessoa_geral": {
-                  "example": "any"
-                },
-                "sinc_posto_geral": {
-                  "example": "any"
-                },
-                "sinc_dependente_geral": {
-                  "example": "any"
-                },
-                "sinc_veiculo_geral": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/sincronismo/{id}": {
-      "get": {
-        "tags": [
-          "Sincronismo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Sincronismo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "sinc_pessoa_geral": {
-                  "example": "any"
-                },
-                "sinc_posto_geral": {
-                  "example": "any"
-                },
-                "sinc_dependente_geral": {
-                  "example": "any"
-                },
-                "sinc_veiculo_geral": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Sincronismo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/unidade": {
-      "get": {
-        "tags": [
-          "Unidade"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nome",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Unidade"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "ativo_unidade": {
-                  "example": "any"
-                },
-                "sinc": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/unidade/{id}": {
-      "get": {
-        "tags": [
-          "Unidade"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Unidade"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "ativo_unidade": {
-                  "example": "any"
-                },
-                "sinc": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Unidade"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/veiculo": {
-      "get": {
-        "tags": [
-          "Veiculo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "qrcode",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "tipo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "renavam",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "ativo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "inativo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "cor_veiculo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "placa",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "modelo",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "marca",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "militar",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "efetivo",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Veiculo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_efetivo": {
-                  "example": "any"
-                },
-                "qrcode": {
-                  "example": "any"
-                },
-                "tipo": {
-                  "example": "any"
-                },
-                "cor_veiculo": {
-                  "example": "any"
-                },
-                "placa": {
-                  "example": "any"
-                },
-                "modelo": {
-                  "example": "any"
-                },
-                "marca": {
-                  "example": "any"
-                },
-                "renavam": {
-                  "example": "any"
-                },
-                "ativo_veiculo": {
-                  "example": "any"
-                },
-                "sinc_veiculo": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/veiculo/{id}": {
-      "get": {
-        "tags": [
-          "Veiculo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Veiculo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_efetivo": {
-                  "example": "any"
-                },
-                "tipo": {
-                  "example": "any"
-                },
-                "cor_veiculo": {
-                  "example": "any"
-                },
-                "placa": {
-                  "example": "any"
-                },
-                "modelo": {
-                  "example": "any"
-                },
-                "marca": {
-                  "example": "any"
-                },
-                "renavam": {
-                  "example": "any"
-                },
-                "qrcode": {
-                  "example": "any"
-                },
-                "ativo_veiculo": {
-                  "example": "any"
-                },
-                "sinc_veiculo": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Veiculo"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/visitante": {
-      "get": {
-        "tags": [
-          "Visitante"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "cpf",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Visitante"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "cpf": {
-                  "example": "any"
-                },
-                "nome": {
-                  "example": "any"
-                },
-                "rua": {
-                  "example": "any"
-                },
-                "numero": {
-                  "example": "any"
-                },
-                "bairro": {
-                  "example": "any"
-                },
-                "estado": {
-                  "example": "any"
-                },
-                "complemento": {
-                  "example": "any"
-                },
-                "telefone": {
-                  "example": "any"
-                },
-                "empresa": {
-                  "example": "any"
-                },
-                "cracha": {
-                  "example": "any"
-                },
-                "ativo_visitante": {
-                  "example": "any"
-                },
-                "sinc": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/visitante/{id}": {
-      "get": {
-        "tags": [
-          "Visitante"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Visitante"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "cpf": {
-                  "example": "any"
-                },
-                "nome": {
-                  "example": "any"
-                },
-                "rua": {
-                  "example": "any"
-                },
-                "numero": {
-                  "example": "any"
-                },
-                "bairro": {
-                  "example": "any"
-                },
-                "estado": {
-                  "example": "any"
-                },
-                "complemento": {
-                  "example": "any"
-                },
-                "telefone": {
-                  "example": "any"
-                },
-                "empresa": {
-                  "example": "any"
-                },
-                "cracha": {
-                  "example": "any"
-                },
-                "ativo_visitante": {
-                  "example": "any"
-                },
-                "sinc": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Visitante"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/alerta": {
-      "get": {
-        "tags": [
-          "Alerta"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nome_alerta",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Alerta"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome_alerta": {
-                  "example": "any"
-                },
-                "cor": {
-                  "example": "any"
-                },
-                "ativo_alerta": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/alerta/{id}": {
-      "get": {
-        "tags": [
-          "Alerta"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Alerta"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome_alerta": {
-                  "example": "any"
-                },
-                "cor": {
-                  "example": "any"
-                },
-                "ativo_alerta": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Alerta"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/dependente": {
-      "get": {
-        "tags": [
-          "Dependente"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "cpf",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Dependente"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_efetivo": {
-                  "example": "any"
-                },
-                "cpf": {
-                  "example": "any"
-                },
-                "nome": {
-                  "example": "any"
-                },
-                "parentesco": {
-                  "example": "any"
-                },
-                "ativo_dependente": {
-                  "example": "any"
-                },
-                "sinc_dependente": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/dependente/{id}": {
-      "get": {
-        "tags": [
-          "Dependente"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Dependente"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_efetivo": {
-                  "example": "any"
-                },
-                "nome": {
-                  "example": "any"
-                },
-                "parentesco": {
-                  "example": "any"
-                },
-                "cpf": {
-                  "example": "any"
-                },
-                "ativo_dependente": {
-                  "example": "any"
-                },
-                "sinc_dependente": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Dependente"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/cartoesvacina": {
-      "get": {
-        "tags": [
-          "CartaoVacina"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "CartaoVacina"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "efetivoId": {
-                  "example": "any"
-                },
-                "doenca": {
-                  "example": "any"
-                },
-                "vacina": {
-                  "example": "any"
-                },
-                "dose": {
-                  "example": "any"
-                },
-                "data_aplicacao": {
-                  "example": "any"
-                },
-                "data_validade": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/cartoesvacina/{id}": {
-      "get": {
-        "tags": [
-          "CartaoVacina"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "CartaoVacina"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "efetivoId": {
-                  "example": "any"
-                },
-                "doenca": {
-                  "example": "any"
-                },
-                "vacina": {
-                  "example": "any"
-                },
-                "dose": {
-                  "example": "any"
-                },
-                "data_aplicacao": {
-                  "example": "any"
-                },
-                "data_validade": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "CartaoVacina"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"

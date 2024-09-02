@@ -1,20 +1,17 @@
-import jwtLib from 'jsonwebtoken';
+function authenticationMiddleware({ cargo }) {
+    return (req, res, next) => {
+        const userAccessLevel = parseInt(req.header('access-level')); // Convertendo para número
 
-function verifyJwt(req, res, next) {
-	const jwt = req.header('Authentication');
+        console.log('Nível de acesso do usuário:', userAccessLevel);
+        console.log('Cargos permitidos para acesso:', cargo);
 
-	if (!jwt) {
-		return res.status(401).json({ message: 'Token nao fornecido!' });
-	}
-
-	try {
-		jwtLib.verify(jwt, process.env.JWT_SECRET_KEY);
-		return next();
-	} catch (error) {
-		if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
-			return res.status(401).send({ unauthorized: `${error.message}` });
-		}
-	}
+        if (cargo.includes(userAccessLevel)) {
+            next();
+        } else {
+            console.log('Acesso negado!');
+            return res.status(401).json({ message: 'Acesso negado!' });
+        }
+    };
 }
 
-export default verifyJwt;
+export default authenticationMiddleware;
