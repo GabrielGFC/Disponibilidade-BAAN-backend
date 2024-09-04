@@ -3,7 +3,8 @@ import loginController from '../controllers/LoginController.js';
 
 const router = express.Router();
 
-router.post('/login', loginController.login);
-router.get('/login', loginController.logout);
+
+router.post('/usuarioLogin', UsuarioController.login, () => { /* #swagger.tags = ['Usuario'] */});
+router.get('/login', loginController.logout, () => { /* #swagger.tags = ['Usuario'] */});
 
 export default router;

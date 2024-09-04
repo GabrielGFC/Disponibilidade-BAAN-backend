@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+import { Sequelize, DataTypes, Model} from 'sequelize';
 import db from '../config/dbConnect.js';
 
 

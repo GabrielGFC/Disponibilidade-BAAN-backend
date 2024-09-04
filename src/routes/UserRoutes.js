@@ -1,16 +1,18 @@
 import express from 'express';
-import UsuarioController from '../controllers/UserController.js';
-import authorizationMiddleware from '../middlewares/authorizationMiddleware.js';
+import UsuarioController from '../controllers/usuarioController.js';
 import authenticationMiddleware from '../middlewares/authenticationMiddleware.js';
+import authorizationMiddleware from '../middlewares/authorizationMiddleware.js';
 
 const router = express.Router();
 
-/* #swagger.tags = ['Usuario'] */
-router.get('/usuario', authorizationMiddleware, authenticationMiddleware({ cargo: [1] }), UsuarioController.getAllEntities);
-router.get('/usuario/:matricula', authorizationMiddleware, authenticationMiddleware({ cargo: [1, 2, 3] }), UsuarioController.getEntity);
-router.post('/usuario', authorizationMiddleware, authenticationMiddleware({ cargo: [1] }), UsuarioController.createEntity);
-router.put('/usuario/:matricula', authorizationMiddleware, authenticationMiddleware({ cargo: [1, 2, 3] }), UsuarioController.updateEntity);
-router.put('/usuario/modificar/:matricula', UsuarioController.updateEntity);
-router.delete('/usuario/:matricula', authorizationMiddleware, authenticationMiddleware({ cargo: [1] }), UsuarioController.deleteEntity);
+router.get( '/usuario', authenticationMiddleware, authorizationMiddleware({nivel_acesso: 1}), UsuarioController.getAllEntities, () => { /* #swagger.tags = ['Usuario']*/ });
+
+router.get( '/usuario/:id', authenticationMiddleware, authorizationMiddleware({nivel_acesso: 1}), UsuarioController.getEntityById, () => { /* #swagger.tags = ['Usuario']*/ });
+
+router.post( '/usuario', authenticationMiddleware, authorizationMiddleware({nivel_acesso: 2}), UsuarioController.createEntity, () => { /* #swagger.tags = ['Usuario']*/ });
+
+router.put( '/usuario/:id', authenticationMiddleware, authorizationMiddleware({nivel_acesso: 2}), UsuarioController.updateEntity, () => { /* #swagger.tags = ['Usuario']*/ });
+
+router.delete( '/usuario/:id', authenticationMiddleware, authorizationMiddleware({nivel_acesso: 2}), UsuarioController.deleteEntity, () => { /* #swagger.tags = ['Usuario']*/ });
 
 export default router;

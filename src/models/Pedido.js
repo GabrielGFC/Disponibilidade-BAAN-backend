@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import DataTypes  from 'sequelize';
 import db from '../config/dbConnect.js';
 
 const Pedido = db.define(
