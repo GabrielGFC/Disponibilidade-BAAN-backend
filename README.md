@@ -40,3 +40,4 @@ npm run start
 
 ## Authors
 Amábile Zucchetti - https://github.com/amabilee
+GABRIEL FERNANDES DE CARVALHO - https://github.com/gabrielgfc
