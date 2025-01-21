@@ -19,7 +19,7 @@
 > Para começar a trabalhar com este projeto, clone o repositório usando o seguinte comando:
 > 
 > ```bash
-> git clone https://gitlab.com/ftt-odonto1/odonto-desenvolvimento.git
+> git clone https://github/.git
 > ```
 > 
 > ## Configuração do Ambiente de Desenvolvimento
