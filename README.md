@@ -1,4 +1,4 @@
-> # Sistema Pasteur-BACKEND :clipboard:
+> # Sistema BAAN-BACKEND :clipboard:
 > 
 > **Agosto/2024**
 > 
@@ -19,7 +19,7 @@
 > Para começar a trabalhar com este projeto, clone o repositório usando o seguinte comando:
 > 
 > ```bash
-> git clone https://github/.git
+> git clone https://github.com/GabrielGFC/Disponibilidade-BAAN-backend.git
 > ```
 > 
 > ## Configuração do Ambiente de Desenvolvimento
